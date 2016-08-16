@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Exercise 2</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css" />
+	<link rel="stylesheet" href="exercise2.css" />
+</head>
+<body>
+	<div class="container">
+		<form>
+			<h1>Exercise 2</h1>
+			<div class="well">
+				Create a CF application that contains a form in which the user enters their details including name,
+				DOB, house number and post code. The form will contain a button that when clicked, will find the
+				full address via an ajax call. If the address is found, the address fields, which are not shown by
+				default, will be shown on the form populated with the correct data. If the address is not found, a
+				message is displayed on the form. (The valid addresses will be stored in memory on the CF server).
+				Note: Finding and populating the address should not refresh the page
+			</div>
+			<div class="form-group">
+				<label for="fullName">Name</label>
+				<input type="text" id="fullName" name="fullName" class="form-control" maxlength="80" placeholder="Hi stranger" required autofocus>
+			</div>
+			<div class="form-group">
+				<label for="dob">Date of Birth</label>
+				<input type="text" id="dob" name="dob" class="form-control e2-datepicker" maxlength="10" placeholder="dd/mm/yyyy">
+			</div>
+			<div class="form-group">
+				<label for="houseNumber">House number</label>
+				<input type="text" id="houseNumber" name="houseNumber" class="form-control" maxlength="5" placeholder="for example, 37">
+			</div>
+			<div class="form-group">
+				<label for="postcode">Post code</label>
+				<input type="text" id="postcode" name="postcode" class="form-control" maxlength="7" placeholder="for example, OX1 4LB">
+			</div>
+			<div id="e2-dynamic" style="display:none;">
+				<div class="form-group">
+					<label for="street">Street</label>
+					<input type="text" id="street" name="street" class="form-control" maxlength="30">
+				</div>
+				<div class="form-group">
+					<label for="city">City</label>
+					<input type="text" id="city" name="city" class="form-control" maxlength="50">
+				</div>
+				<div class="form-group">
+					<label for="country">Country</label>
+					<input type="text" id="country" name="country" class="form-control" maxlength="30">
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="button" class="btn btn-primary btn-block btn-lg" id="e2-btn-lookup">Lookup</button>
+			</div>
+		</form>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+	<script src="exercise2.js"></script>
+</body>
+</html>
