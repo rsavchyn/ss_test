@@ -47,6 +47,9 @@
 		<cfset var qryAll		= getData()>
 		<cfset var qryFind		= "">
 		<cfset stcResult["errCode"]	= 0>
+		<cfif ListLen(arguments.dob, "/") EQ 3>
+			<cfset arguments.dob = CreateDate(ListLast(arguments.dob, "/"), ListGetAt(arguments.dob, 2, "/"), ListFirst(arguments.dob, "/"))>
+		</cfif>
 		<cfif NOT isDate(arguments.dob)>
 			<cfset stcResult["errCode"]	= 2>
 			<cfset stcResult["errMsg"]	= "Date is not valid">
@@ -71,6 +74,17 @@
 				<cfset stcResult["country"]	= qryFind.country>
 			</cfif>
 		</cfif>
+		<cfreturn stcResult>
+	</cffunction>
+
+	<cffunction name="fill" access="remote" output="no" returntype="struct" returnformat="json">
+		<cfset var stcResult	= StructNew()>
+		<cfset var qryAll		= getData()>
+		<cfset var rndPosition	= RandRange(1, qryAll.RecordCount)>
+		<cfset stcResult["fullName"]	= qryAll.fullName[rndPosition]>
+		<cfset stcResult["dob"]			= DateFormat(qryAll.dob[rndPosition], "dd/mm/yyyy")>
+		<cfset stcResult["houseNumber"]	= qryAll.houseNumber[rndPosition]>
+		<cfset stcResult["postcode"]	= qryAll.postcode[rndPosition]>
 		<cfreturn stcResult>
 	</cffunction>
 

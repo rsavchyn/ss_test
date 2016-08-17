@@ -31,4 +31,23 @@ $(function(){
 			}
 		);
 	});
+	$('#e2-btn-fill').click(function(){
+		$.getJSON(
+			'exercise2.cfc',
+			{
+				method		: 'fill'
+			},
+			function (data){
+				$('#e2-msgbox').hide();
+				$('#e2-dynamic').hide();
+				$('#fullName').val(data.fullName)
+				$('#dob').val(data.dob)
+				$('#houseNumber').val(data.houseNumber)
+				$('#postcode').val(data.postcode)
+				$('#street').val('');
+				$('#city').val('');
+				$('#country').val('');
+			}
+		);
+	});
 });
